@@ -16,14 +16,14 @@ docker compose up -d
 
 Настраиваем шардирование: роутер, сервер конфигурации, шарды
 ```shell
-./scripts/mongo_sharding_init.sh
+sh ./scripts/setup_sharding.sh
 ```
 
 
 Заполняем mongodb данными
 
 ```shell
-./scripts/mongo_set_data.sh
+sh ./scripts/setup_data.sh
 ```
 
 ## Как проверить
@@ -48,6 +48,17 @@ curl --silent http://ifconfig.me
 
 
 ### Чтобы проверить сколько записи распределены по шардам
+
+Подключаемся к роутеру
+
+```shell
+docker exec -it mongos_router mongosh --port 27020
+use somedb
+db.helloDoc.getShardDistribution();
+```
+
+Или
+
 
 Подключаемся к первой шарде
 
