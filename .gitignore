@@ -1,2 +1,3 @@
 venv
 mongo-sharding-repl/temp
+sharding-repl-cache/temp
